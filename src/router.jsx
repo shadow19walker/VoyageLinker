@@ -1,138 +1,58 @@
-// /* eslint-disable react-refresh/only-export-components */
-// import { Navigate, createBrowserRouter } from "react-router-dom";
-// import { Suspense, lazy } from "react";
-// import Spinner from 'react-bootstrap/Spinner';
+/* eslint-disable react-refresh/only-export-components */
+import { Suspense, lazy } from "react";
+import { Navigate, createBrowserRouter } from "react-router-dom";
+import Spinner from 'react-bootstrap/Spinner';
 
-// import Index from "./index/Index"
-// // import Loading from "./index/Loading/Loading";
+const LazyConnexion = lazy(() => import('./pages/Connexion'))
+const LazySignup = lazy(() => import('./views/Connexion/Signup'))
+const LazyLogin = lazy(() => import('./views/Connexion/Login'))
 
 
-// const LazyAcceuil = lazy(() => import('./users/client/pages/Acceuil'))
-// const LazyPanier = lazy(() => import('./users/client/pages/Panier'))
-// const LazyCompte = lazy(() => import('./users/client/pages/Compte'))
-// const LazySearch = lazy(() => import('./users/client/pages/Search'))
-// const LazyConnexion = lazy(() => import('./index/Connexion'))
-// const LazyLogin = lazy(() => import('./index/Login'))
-// const LazyLoginEmp = lazy(() => import('./index/LoginEmp'))
-// const LazySignup = lazy(() => import('./index/Signup'))
-// const LazySignupEmp = lazy(() => import('./index/SignupEmp'))
-// const LazyClient = lazy(() => import('./users/client/components/ClientInterface'))
-// // const LazyLoading = lazy(() => import('./index/Loading/Loading'))
-// const LazyNotFound = lazy(() => import('./index/NotFound'))
+const LazyNotFound = lazy(() => import('./pages/NotFound'))
 
-// const router = createBrowserRouter ([
-//   {
-//     path: '/',
-//     element: <Index/>
-//   },
-//   {
-//     path: '/connexion',
-//     element: (
-//       <Suspense fallback={<><h2>Loading</h2> <br/> <Spinner animation="border" variant="secondary" /></>}>
-//         <LazyConnexion/>
-//       </Suspense>
-//     ),
-//     children:[
-//       {
-//         path: '/connexion',
-//         element: (
-//           <Suspense fallback={<><h2>Loading</h2> <br/> <Spinner animation="border" variant="secondary" /></>}>
-//             <LazyLogin/>
-//           </Suspense>
-//         )
-//       },
-//       {
-//         path: 'login',
-//         element: (
-//           <Suspense fallback={<><h2>Loading</h2> <br/> <Spinner animation="border" variant="secondary" /></>}>
-//             <Navigate to="/connexion"/>
-//           </Suspense>
-//         )
-//       },
-//       {
-//         path: 'login-employee',
-//         element: (
-//           <Suspense fallback={<><h2>Loading</h2> <br/> <Spinner animation="border" variant="secondary" /></>}>
-//             <LazyLoginEmp/>
-//           </Suspense>
-//         )
-//       },
-//       {
-//         path: 'signup',
-//         element: (
-//           <Suspense fallback={<><h2>Loading</h2> <br/> <Spinner animation="border" variant="secondary" /></>}>
-//             <LazySignup/>
-//           </Suspense>
-//         )
-//       },
-//       {
-//         path: 'signup-employee',
-//         element: (
-//           <Suspense fallback={<><h2>Loading</h2> <br/> <Spinner animation="border" variant="secondary" /></>}>
-//             <LazySignupEmp/>
-//           </Suspense>
-//         )
-//       }
-//     ]
-//   },
-//   {
-//     path: '*',
-//     element: (
-//       <Suspense fallback={<><h2>Loading</h2> <br/> <Spinner animation="border" variant="secondary" /></>}>
-//         <LazyNotFound/>
-//       </Suspense>
-//     )
-//   },
-//   {
-//     path: '/client',
-//     element: (
-//       <Suspense fallback={<><h2>Loading</h2> <br/> <Spinner animation="border" variant="secondary" /></>}>
-//         <LazyClient/>
-//       </Suspense>
-//     ),
-//     children:[
-//       {
-//         path: 'acceuil',
-//         element: (
-//           <Suspense fallback={<><h2>Loading</h2> <br/> <Spinner animation="border" variant="secondary" /></>}>
-//             <LazyAcceuil/>
-//           </Suspense>
-//         )
-//       },
-//       {
-//         path: '/client',
-//         element: (
-//           <Suspense fallback={<><h2>Loading</h2> <br/> <Spinner animation="border" variant="secondary" /></>}>
-//             <Navigate to="acceuil"/>
-//           </Suspense>
-//     ),
-//       },
-//       {
-//         path: 'panier',
-//         element: (
-//           <Suspense fallback={<><h2>Loading</h2> <br/> <Spinner animation="border" variant="secondary" /></>}>
-//             <LazyPanier/>
-//           </Suspense>
-//         )
-//       },
-//       {
-//         path: 'compte',
-//         element: (
-//           <Suspense fallback={<><h2>Loading</h2> <br/> <Spinner animation="border" variant="secondary" /></>}>
-//             <LazyCompte/>
-//           </Suspense>
-//         )
-//       },
-//       {
-//         path: 'search',
-//         element: (
-//           <Suspense fallback={<><h2>Loading</h2> <br/> <Spinner animation="border" variant="secondary" /></>}>
-//             <LazySearch/>
-//           </Suspense>
-//         )
-//       }
-//     ]
-//   }
-// ])
+const router = createBrowserRouter ([
+  {
+    path: '/',
+    element: (
+      <Suspense fallback={<><h2>Loading</h2> <br/> <Spinner animation="border" variant="secondary" /></>}>
+        <LazyConnexion/>
+      </Suspense>
+    ),
+    children:[
+      {
+        path: '/',
+        element: (
+          <Suspense fallback={<><h2>Loading</h2> <br/> <Spinner animation="border" variant="secondary" /></>}>
+            <LazyLogin/>
+          </Suspense>
+        )
+      },
+      {
+        path: 'login',
+        element: (
+          <Suspense fallback={<><h2>Loading</h2> <br/> <Spinner animation="border" variant="secondary" /></>}>
+            <Navigate to="/"/>
+          </Suspense>
+        )
+      },
+      {
+        path: 'signup',
+        element: (
+          <Suspense fallback={<><h2>Loading</h2> <br/> <Spinner animation="border" variant="secondary" /></>}>
+            <LazySignup/>
+          </Suspense>
+        )
+      },
+    ]
+  },
+  {
+    path: '*',
+    element: (
+      <Suspense fallback={<><h2>Loading</h2> <br/> <Spinner animation="border" variant="secondary" /></>}>
+        <LazyNotFound/>
+      </Suspense>
+    )
+  }
+])
 
-// export default router
+export default router
